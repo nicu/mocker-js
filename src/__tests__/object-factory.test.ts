@@ -10,11 +10,11 @@ describe("objectFactory", () => {
   };
 
   const UserFactory = objectFactory<User>((faker) => ({
-    firstname: faker.name.firstName(),
-    lastname: faker.name.lastName(),
-    address: faker.address.streetAddress(),
-    age: faker.datatype.number({ max: 100 }),
-    phone: faker.phone.phoneNumber(),
+    firstname: faker.person.firstName(),
+    lastname: faker.person.lastName(),
+    address: faker.location.streetAddress(),
+    age: faker.number.int({ max: 100 }),
+    phone: faker.phone.number(),
   }));
 
   describe("create", () => {
@@ -113,8 +113,8 @@ describe("objectFactory", () => {
     });
 
     it("should create a new object with provided generator", () => {
-      const ChildModel = UserFactory.assign(faker => ({
-        age: faker.datatype.number({ max: 10 }),
+      const ChildModel = UserFactory.assign((faker) => ({
+        age: faker.number.int({ max: 10 }),
       }));
 
       const model = ChildModel.create();

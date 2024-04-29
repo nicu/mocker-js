@@ -35,7 +35,9 @@ describe("constantFactory", () => {
     });
 
     it("should receive a random entry from provided generator", () => {
-      const CityFactory = constantFactory<string>(faker => faker.address.cityName()); 
+      const CityFactory = constantFactory<string>((faker) =>
+        faker.location.city()
+      );
 
       const entries = CityFactory.entries(12);
       expect(entries).toHaveLength(12);

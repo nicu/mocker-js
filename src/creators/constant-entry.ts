@@ -16,7 +16,7 @@ export const constantEntry = <T>(
   const absQuantity = Math.max(1, quantity);
   return Array.from<T>({ length: absQuantity }).map(() => {
     const generatorResult = getConstantGeneratorResult(generator);
-    const rand = faker.datatype.number(generatorResult.length - 1);
+    const rand = faker.number.int(generatorResult.length - 1);
     return generatorResult[rand];
   });
 };

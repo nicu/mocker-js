@@ -22,7 +22,7 @@ export const constantSample = <T>(
   let index = -1;
 
   while (++index < end) {
-    const rand = faker.datatype.number(size - 1);
+    const rand = faker.number.int(size - 1);
     const value = list[rand];
     list[rand] = list[index];
     list[index] = value;
